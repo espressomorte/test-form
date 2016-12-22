@@ -41,7 +41,7 @@
 
     <div class="form-group">
       <label  for="InputFile">File input</label>
-      <input type="file" class="form-control-file" name="file_upload" aria-describedby="fileHelp" multiple />
+      <input type="file" id="file_upload" class="form-control-file" name="file_upload" aria-describedby="fileHelp" multiple />
     </div>
 
     <div class="form-check">
@@ -85,7 +85,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js"></script>
 
-<script src="js/temp_script.js"></script>
+<script src="js\script.js"></script>
 
   </form>
 </body>

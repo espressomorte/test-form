@@ -18,13 +18,8 @@ if(!empty($email) && !empty($name) && !empty($phone) && !empty($comment)) {
    }
   $query = mysqli_query($con,$sql);
 
-if ($_FILES['file_upload']['error'] === UPLOAD_ERR_OK) {
-  if(!move_uploaded_file($_FILES['file_upload']['tmp_name'], 'uploads/' . $_FILES['file_upload']['name'])){
-    die('Error uploading file - check destination is writeable.');
- }
-}
 
-
+require_once 'upload.php';
 }
 
 function clean($value) {

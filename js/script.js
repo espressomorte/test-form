@@ -34,8 +34,8 @@ $(document).ready(function() {
                validators: {
                      stringLength: {
                        min: 10,
-                       max: 200,
-                       message:'Please enter at least 10 characters and no more than 200'
+                       max: 500,
+                       message:'Please enter at least 10 characters and no more than 500'
                    },
                    notEmpty: {
                        message: 'Please supply a description about yourself'
@@ -57,42 +57,23 @@ $(document).ready(function() {
        })
 
        .on('success.form.bv', function(e) {
-          // $('#success_message').slideDown({ opacity: "show" }, "slow")
-               $('#comment-form').data('bootstrapValidator').resetForm();
-           e.preventDefault();
-           var $form = $(e.target);
-           var bv = $form.data('bootstrapValidator');
-    //       $.post($form.attr('action'), $form.serialize(), function(response) {alert(response);}, 'json');
 
+         var form = $('#comment-form');
+         var data = new FormData();
+         var file_data = $('#file_upload').prop('files')[0];
+         $.each($(':input',form),function (i, fields) {
+           data.append($(fields).attr('name'), $(fields).val());})
+           data.append('file',file_data);
 
+            var request = new XMLHttpRequest();
+              request.open("POST", "insert.php");
+              request.send(data);
 
-        /*   $(function(){
-           $("#submit").click(function(e){
-             e.preventDefault();
+      //  $('#comment-form').data('bootstrapValidator').resetForm();
 
-               var $form = $('#comment-form');
-
-               $.ajax({
-                         url: $form.attr("action"),
-                          type: $form.attr("method"),
-                          data: $form.serialize(),
-
-                          success: function (response)
-                          {
-                             $( '#comment-form' ).each(function()
-                             {
-                                 this.reset();
-                             });
-                           },
-                          error: function (response)
-                          {
-                             alert('ajax failed');
-                           },
-                       });
-                     });
-               });*/
-
-
+        setTimeout(function(){
+           location.reload();
+      }, 500);
 
        });
 });
